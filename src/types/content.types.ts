@@ -27,12 +27,6 @@ export type Person = {
   location: IANATimeZone;
   /** Languages spoken */
   languages?: string[];
-  /**
-   * BCP 47 language tag for the HTML lang attribute (e.g., 'en', 'ja', 'zh-TW').
-   * Defaults to 'en' if not set.
-   * See: https://www.iana.org/assignments/language-subtag-registry
-   */
-  locale?: string;
 };
 
 /**
@@ -105,6 +99,17 @@ export interface Home extends BasePageConfig {
     title: React.ReactNode;
     href: string;
   };
+
+  galleryCategories: Array<{
+    /** Image source path */
+    id: string;
+    /** Image alt text */
+    image: string;
+    /** Image orientation (horizontal/vertical) */
+    title: string;
+    category: string;
+    description: string;
+  }>
   /** The sub text which appears below the headline */
   subline: React.ReactNode;
 }
@@ -242,5 +247,6 @@ export interface Gallery extends BasePageConfig {
     alt: string;
     /** Image orientation (horizontal/vertical) */
     orientation: string;
+    category?: string;
   }>;
 }

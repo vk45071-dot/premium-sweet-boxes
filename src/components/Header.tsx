@@ -8,6 +8,7 @@ import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
+import Image from "next/image";
 
 type TimeDisplayProps = {
   timeZone: string;
@@ -72,8 +73,15 @@ export const Header = () => {
           position: "fixed",
         }}
       >
-        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
+        <Row paddingLeft="12" fillWidth vertical="center">
+          <Image
+            src="/images/og/Victorlogo.png"
+            alt="Premium Eco Packaging"
+            width={80}   // adjust based on your logo
+            height={15}
+            priority
+            style={{ objectFit: "contain" }}
+          />
         </Row>
         <Row fillWidth horizontal="center">
           <Row
@@ -87,10 +95,10 @@ export const Header = () => {
           >
             <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+                <ToggleButton prefixIcon="home" label={"Home"} href="/" selected={pathname === "/"} />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
-              {routes["/about"] && (
+              {/* {routes["/about"] && (
                 <>
                   <Row s={{ hide: true }}>
                     <ToggleButton
@@ -108,8 +116,8 @@ export const Header = () => {
                     />
                   </Row>
                 </>
-              )}
-              {routes["/work"] && (
+              )} */}
+              {/* {routes["/work"] && (
                 <>
                   <Row s={{ hide: true }}>
                     <ToggleButton
@@ -146,7 +154,7 @@ export const Header = () => {
                     />
                   </Row>
                 </>
-              )}
+              )} */}
               {routes["/gallery"] && (
                 <>
                   <Row s={{ hide: true }}>
@@ -184,7 +192,7 @@ export const Header = () => {
             gap="20"
           >
             <Flex s={{ hide: true }}>
-              {display.time && <TimeDisplay timeZone={person.location} />}
+              {/* {display.time && <TimeDisplay timeZone={person.location} />} */}
             </Flex>
           </Flex>
         </Flex>
