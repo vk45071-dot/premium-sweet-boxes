@@ -33,9 +33,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
 }) => {
 
   const images = [
-    "/images/home/Premium Eco Packaging_2.jpg",
-    "/images/home/Premium Eco Packaging_1.jpg",
-    "/images/home/Premium Eco Packaging_3.jpg"
+    "/images/home/A.png",
+    "/images/home/B.png",
+    "/images/home/C.png"
   ]
   return (
     <Column fillWidth gap="m">

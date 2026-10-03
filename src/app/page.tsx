@@ -32,6 +32,88 @@ export async function generateMetadata() {
 
 export default function Home() {
 
+  const topNavigation = [
+    {
+      title: "Catering & Sweets Partners",
+      image: "/images/Tab/Tab_PEP_1.jpg",
+      href: "/catering-sweets",
+      theme: "light",
+    },
+    {
+      title: "Premium Sweet Box",
+      image: "/images/Tab/Tab_PEP_2.jpg",
+      href: "/premium-sweet-box",
+      theme: "peach",
+    },
+    {
+      title: "Catering & Sweets Partners",
+      image: "/images/Tab/Tab_PEP_3.jpg",
+      href: "/catering-sweets",
+      theme: "light",
+    },
+    {
+      title: "PEP",
+      subtitle: "PREMIUM ECO PACKAGING",
+      image: "/images/Tab/Tab_PEP_4.jpg",
+      href: "/",
+      theme: "dark",
+    },
+  ];
+
+  const serviceNavigation = [
+    {
+      title: "Corporate Gifts",
+      image: "/images/secondTab/Corporate Gift_1.jpg",
+      href: "/corporate-gifts",
+    },
+    {
+      title: "Promotional Products",
+      image: "/images/secondTab/Promotional Product_2.jpg",
+      href: "/promotional-products",
+    },
+    {
+      title: "Company Brand Stores",
+      image: "/images/secondTab/Dry Fruit & Nuts_3.jpg",
+      href: "/company-brand-stores",
+    },
+    {
+      title: "New Hire Kits",
+      image: "/images/secondTab/Sweet & Catering_4.jpg",
+      href: "/new-hire-kits",
+    },
+    {
+      title: "Drop Ship & Warehousing",
+      image: "/images/secondTab/Company Brand Gifts_5.jpg",
+      href: "/drop-ship",
+    },
+    {
+      title: "E-Gifting Solutions",
+      image: "/images/secondTab/Seasonal & Festival Gifts_6.jpg",
+      href: "/e-gifting",
+    },
+    {
+      title: "Seasonal & Festival Gifts",
+      image: "/images/secondTab/E-Gifting Solution_7.jpg",
+      href: "/festival-gifts",
+    },
+    {
+      title: "Global Gifting",
+      image: "/images/secondTab/Invitation & Wedding Gifts_8.jpg",
+      href: "/global-gifting",
+    },
+
+    {
+      title: "Seasonal & Festival Gifts",
+      image: "/images/secondTab/Stores & Warehousing_9.jpg",
+      href: "/festival-gifts",
+    },
+    {
+      title: "Global Gifting",
+      image: "/images/secondTab/Global Gifting_10.jpg",
+      href: "/global-gifting",
+    },
+  ];
+
   const teamMembers = [
     {
       role: "Sales Head",
@@ -87,28 +169,126 @@ export default function Home() {
       />
       <Column fillWidth horizontal="center" gap="m">
         <Column maxWidth="s" horizontal="center" align="center">
-          {home.featured.display && (
-            <RevealFx
-              fillWidth
-              horizontal="center"
-              paddingTop="16"
-              paddingBottom="32"
-              paddingLeft="12"
-            >
-              <Badge
-                background="brand-alpha-weak"
-                paddingX="12"
-                paddingY="4"
-                onBackground="neutral-strong"
-                textVariant="label-default-s"
-                arrow={false}
-                href={home.featured.href}
+          {/* Two Row Navigation */}
+          <RevealFx fillWidth translateY="8" delay={0.2}>
+            <Column fillWidth gap="24">
+
+              {/* First Row */}
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+                  gap: "8px",
+                  width: "100%",
+                }}
               >
-                <Row paddingY="2">{home.featured.title}</Row>
-              </Badge>
-            </RevealFx>
-          )}
-          <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
+                {topNavigation.map((item, index) => (
+                  <a
+                    key={index}
+                    href={item.href}
+                    style={{
+                      display: "block",
+                      width: "90%",
+                      aspectRatio: "2 / 1",
+                      overflow: "hidden",
+                      borderRadius: "12px",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      style={{
+                        display: "block",
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        borderRadius: "12px",
+                        objectFit: "fill",
+                      }}
+                    />
+                  </a>
+                ))}
+              </div>
+
+              {/* Second Row */}
+              {/* Second Row */}
+              {/* Second Row - auto scrolling */}
+              <style>{`
+  @keyframes serviceMarquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .service-marquee {
+    overflow: hidden;
+    width: 100%;
+    padding: 20px 0;
+  }
+  .service-marquee-track {
+    display: flex;
+    width: max-content;
+    animation: serviceMarquee 30s linear infinite;
+  }
+  .service-marquee:hover .service-marquee-track {
+    animation-play-state: paused;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .service-marquee-track { animation: none; }
+    .service-marquee { overflow-x: auto; }
+  }
+`}</style>
+
+              <div className="service-marquee">
+                <div className="service-marquee-track">
+                  {[...serviceNavigation, ...serviceNavigation].map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.href}
+                      aria-hidden={index >= serviceNavigation.length ? true : undefined}
+                      tabIndex={index >= serviceNavigation.length ? -1 : undefined}
+                      style={{
+                        flex: "0 0 auto",
+                        width: "110px",
+                        marginRight: "12px",     // use margin, not gap, so the loop is seamless
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        textDecoration: "none",
+                        color: "inherit",
+                        backgroundColor:'white',
+                        borderRadius:12
+                      }}
+                    >
+                      <div
+                        style={{
+                          width: "100%",
+                          aspectRatio: "1 / 1",
+                          overflow: "hidden",
+                          borderRadius: "12px",
+                        }}
+                      >
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          style={{
+                            display: "block",
+                            width: "100%",
+                            height: "100%",
+                            marginTop:10,
+                            objectFit: "cover",
+                            transform: "scale(1.25) translateY(6%)",
+                            transformOrigin: "center",
+                          }}
+                        />
+                      </div>
+                    </a>
+                  ))}
+                </div>
+              </div>
+
+            </Column>
+          </RevealFx>
+          {/* <RevealFx translateY="4" fillWidth horizontal="center" paddingBottom="16">
             <Heading wrap="balance" variant="display-strong-l">
               {home.headline}
             </Heading>
@@ -121,8 +301,8 @@ export default function Home() {
             >
               {home.subline}
             </Text>
-          </RevealFx>
-          <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
+          </RevealFx> */}
+          {/* <RevealFx paddingTop="12" delay={0.4} horizontal="center" paddingLeft="12">
             <Button
               id="about"
               data-border="rounded"
@@ -144,7 +324,7 @@ export default function Home() {
                 {about.title}
               </Row>
             </Button>
-          </RevealFx>
+          </RevealFx> */}
         </Column>
       </Column>
       <RevealFx translateY="16" delay={0.6}>
