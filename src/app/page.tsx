@@ -204,7 +204,6 @@ export default function Home() {
                         height: "100%",
                         objectFit: "cover",
                         borderRadius: "12px",
-                        objectFit: "fill",
                       }}
                     />
                   </a>
